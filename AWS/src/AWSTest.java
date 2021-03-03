@@ -26,7 +26,16 @@ class AWSTest {
 
 	@Test
 	void testToString() {
-		fail("Not yet implemented");
+		int[] x = {1,2,3};
+		AWS aws = new AWS(x);
+		String result = "AWS [values=[1, 2, 3]]";
+		assertEquals(aws.toString(), result);
+		//fail("Not yet implemented");
+	}
+
+	private void assertThat(String string, String result) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Test
@@ -130,7 +139,7 @@ class AWSTest {
 			if (array[i] > threshold)
 			{
 			assertEquals(values[i], expected);
-		}
+			}
 			else {
 			assertEquals(values[i], array[i]);
 			}
@@ -138,7 +147,4 @@ class AWSTest {
 		
 	}
 }
-
-
-
 
