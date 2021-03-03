@@ -121,13 +121,19 @@ class AWSTest {
 		int[] array = {2, 3, 6, 1, 7, 8};
 		AWS aws = new AWS(array);
 		int threshold = 1;
-		int count = 6;
+		int count = 5;
 		int expected = FILLER_VALUE;
 		int result = aws.removeBiggerThan(threshold);
 		assertEquals(count, result);
 		int[] values = aws.getValues();
 		for (int i = 0; i <  values.length; i++) {
+			if (array[i] > threshold)
+			{
 			assertEquals(values[i], expected);
+		}
+			else {
+			assertEquals(values[i], array[i]);
+			}
 		}
 		
 	}
