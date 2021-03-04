@@ -19,6 +19,7 @@
   <dependency>
   <groupId>org.junit</groupId>
   <artifactId>junit5-engine</artifactId>
+  <scope>test</scope>
   <version>5.0.0-ALPHA</version>
 </dependency>
 </dependencies>
