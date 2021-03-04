@@ -22,4 +22,5 @@ jobs:
         java-version: 1.8
     - name: Build with Maven
       run: |
-        mvn AWS/src
+        cd AWS
+        mvn test
