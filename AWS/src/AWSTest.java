@@ -16,12 +16,27 @@ class AWSTest {
 
 	@Test
 	void testGetValues() {
-		fail("Not yet implemented");
+		int[] expected = {1,2,3};
+		AWS aws = new AWS(expected);
+		int[] values = aws.getValues();
+		for(int i = 0; i < values.length; i ++)
+		{
+			assertEquals(values[i], expected[i]);
+		}
 	}
 
 	@Test
 	void testSetValues() {
-		fail("Not yet implemented");
+		int[] dummy = {0};
+		int[] expected = {1,2,3};
+		AWS aws = new AWS(dummy);
+		aws.setValues(expected);
+		int[] values = aws.getValues();
+		for(int i = 0; i < values.length; i ++)
+		{
+			assertEquals(values[i], expected[i]);
+		}
+		
 	}
 
 	@Test
