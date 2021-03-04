@@ -1,7 +1,11 @@
+package test.java;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import main.java.AWS;
 
 class AWSTest {
 
@@ -165,7 +169,7 @@ class AWSTest {
 	@Test
 	void testStepMultiplier() {
 		int[] array = {0, 1, 11, 21, 91, 101};
-		int[] expected = {0, 2, 44, 2100, 9100, 101};
+		int[] expected = {0, 2, 44, 2100, 9100, 10100};
 		AWS aws = new AWS(array);
 		int[] result = aws.stepMultiplier();
 		for (int i = 0; i <  result.length; i++) {
