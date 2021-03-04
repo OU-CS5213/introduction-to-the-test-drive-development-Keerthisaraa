@@ -66,5 +66,9 @@ public class AWS {
 		}
 		return count;
 	}
+	
+	public int[] stepMultiplier(){
+		return values;
+	}
 	}
 
