@@ -1,0 +1,6 @@
+/.metadata/
+.github
+AWS/.settings/
+AWS/bin/
+.classpath
+.project

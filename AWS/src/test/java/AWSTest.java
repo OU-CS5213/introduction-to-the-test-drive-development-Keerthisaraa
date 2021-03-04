@@ -1,7 +1,11 @@
+package test.java;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import main.java.AWS;
 
 class AWSTest {
 
@@ -16,17 +20,41 @@ class AWSTest {
 
 	@Test
 	void testGetValues() {
-		fail("Not yet implemented");
+		int[] expected = {1,2,3};
+		AWS aws = new AWS(expected);
+		int[] values = aws.getValues();
+		for(int i = 0; i < values.length; i ++)
+		{
+			assertEquals(values[i], expected[i]);
+		}
 	}
 
 	@Test
 	void testSetValues() {
-		fail("Not yet implemented");
+		int[] dummy = {0};
+		int[] expected = {1,2,3};
+		AWS aws = new AWS(dummy);
+		aws.setValues(expected);
+		int[] values = aws.getValues();
+		for(int i = 0; i < values.length; i ++)
+		{
+			assertEquals(values[i], expected[i]);
+		}
+		
 	}
 
 	@Test
 	void testToString() {
-		fail("Not yet implemented");
+		int[] x = {1,2,3};
+		AWS aws = new AWS(x);
+		String result = "AWS [values=[1, 2, 3]]";
+		assertEquals(aws.toString(), result);
+		//fail("Not yet implemented");
+	}
+
+	private void assertThat(String string, String result) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Test
@@ -102,7 +130,7 @@ class AWSTest {
 		int[] org = originalAWS.getValues();
 		int expectedValue = org[position];
  		int first = org[0];
-		int expected = originalAWS.getValues().length + numberOfTimes;
+		int expected = originalAWS.getValues().length + Math.abs(numberOfTimes);
 		originalAWS.fillAndExpand(position, numberOfTimes);
 		int[] result = originalAWS.getValues();
 		assertEquals(expected, result.length);
@@ -115,9 +143,39 @@ class AWSTest {
 		assertEquals(expectedValue, c);
 		 
 		assertEquals(first, result[0]);
-
-	
 	}
-
-
+	@Test
+	void testRemoveBiggerThan() {
+		int[] array = {2, 3, 6, 1, 7, 8};
+		AWS aws = new AWS(array);
+		int threshold = 1;
+		int count = 5;
+		int expected = FILLER_VALUE;
+		int result = aws.removeBiggerThan(threshold);
+		assertEquals(count, result);
+		int[] values = aws.getValues();
+		for (int i = 0; i <  values.length; i++) {
+			if (array[i] > threshold)
+			{
+			assertEquals(values[i], expected);
+			}
+			else {
+			assertEquals(values[i], array[i]);
+			}
+		}
+		
+	}
+	
+	@Test
+	void testStepMultiplier() {
+		int[] array = {0, 1, 11, 21, 91, 101};
+		int[] expected = {0, 2, 44, 2100, 9100, 101};
+		AWS aws = new AWS(array);
+		int[] result = aws.stepMultiplier();
+		for (int i = 0; i <  result.length; i++) {
+			assertEquals(expected[i], result[i]);
+		}
+		
+	}
 }
+
